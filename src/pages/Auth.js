@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 
 import { fetchUsers, login } from '../actions';
 
@@ -25,6 +26,7 @@ class Auth extends Component {
   render() {
     return (
       <div>
+        {this.props.currentUser !== '' && <Redirect to={'/'} />}
         <h1>Auth</h1>
         <form onSubmit={this.onSubmit}>
           <select
@@ -51,7 +53,13 @@ class Auth extends Component {
   }
 }
 
-export default connect(({ users }) => ({ users }), {
-  fetchUsers,
-  login,
-})(Auth);
+export default connect(
+  ({ users, auth: { currentUser } }) => ({
+    users,
+    currentUser,
+  }),
+  {
+    fetchUsers,
+    login,
+  }
+)(Auth);
