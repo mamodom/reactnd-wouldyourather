@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Auth from './pages/Auth';
 import Home from './pages/Home';
+import QuestionDetails from './pages/QuestionDetails';
 
 import reducer from './reducers';
 import enhancer from './enhancer';
@@ -20,6 +21,7 @@ class App extends Component {
           <div>
             <Route path="/signin" component={Auth} />
             <Route exact path="/" component={Home} />
+            <Route path="/questions/:questionId" component={QuestionDetails} />
           </div>
         </BrowserRouter>
       </Provider>
