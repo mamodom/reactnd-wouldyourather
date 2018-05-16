@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Question from '../components/Question';
-import withAuthorization from '../containers/Authorized';
+import UserHeader from '../components/UserHeader';
 
 import { fetchQuestions } from '../actions';
+import withAuthorization from '../containers/Authorized';
 
 class Home extends Component {
   componentDidMount() {
@@ -14,11 +15,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div>
-          <span>Current User: </span>
-          <span>{this.props.name}</span>
-          <img src={this.props.avatarURL} alt="avatar" />
-        </div>
+        <UserHeader />
         <h1>Home</h1>
         {this.props.unanswered.map(id => <Question id={id} key={id} />)}
         <hr />

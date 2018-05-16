@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import withAuthorization from '../containers/Authorized';
+import UserHeader from '../components/UserHeader';
 
 class QuestionDetails extends Component {
   render() {
-    return <h1>Question {this.props.id}</h1>;
+    return (
+      <div>
+        <UserHeader />
+        <h1>Question {this.props.id}</h1>
+      </div>
+    );
   }
 }
 
