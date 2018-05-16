@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router';
 
 import Question from '../components/Question';
+import withAuthorization from '../containers/Authorized';
 
 import { fetchQuestions } from '../actions';
 
@@ -14,7 +14,6 @@ class Home extends Component {
   render() {
     return (
       <div>
-        {!this.props.userId && <Redirect to={'/signin'} />}
         <div>
           <span>Current User: </span>
           <span>{this.props.name}</span>
@@ -47,6 +46,8 @@ const mapStateToProps = ({ users, auth, questions }) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  fetchQuestions,
-})(Home);
+export default withAuthorization(
+  connect(mapStateToProps, {
+    fetchQuestions,
+  })(Home)
+);
