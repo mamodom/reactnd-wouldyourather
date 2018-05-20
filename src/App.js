@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Auth from './pages/Auth';
 import Home from './pages/Home';
 import QuestionDetails from './pages/QuestionDetails';
+import Foo from './pages/Foo';
 
 import reducer from './reducers';
 import enhancer from './enhancer';
@@ -15,6 +16,7 @@ const store = createStore(reducer, {}, enhancer);
 
 class App extends Component {
   render() {
+    return <Foo />;
     return (
       <Provider store={store}>
         <BrowserRouter>

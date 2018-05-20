@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
 
 import Question from '../components/Question';
 import UserHeader from '../components/UserHeader';
@@ -8,6 +12,10 @@ import { fetchQuestions } from '../actions';
 import withAuthorization from '../containers/Authorized';
 
 class Home extends Component {
+  state = {
+    open: false,
+  };
+
   componentDidMount() {
     this.props.fetchQuestions();
   }
@@ -15,6 +23,19 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <AppBar>
+          <Toolbar>
+            <Typography variant="title" color="inherit">
+              Would you rather
+            </Typography>
+          </Toolbar>
+          <IconButton
+            aria-owns={this.state.open ? 'menu-appbar' : null}
+            aria-haspopup="true"
+            onClick={this.handleMenu}
+            color="inherit"
+          />
+        </AppBar>
         <UserHeader />
         <h1>Home</h1>
         {this.props.unanswered.map(id => <Question id={id} key={id} />)}
