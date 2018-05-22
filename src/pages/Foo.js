@@ -13,11 +13,7 @@ import {
   Avatar,
   Card,
   CardContent,
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
+  Button,
 } from '@material-ui/core';
 
 const Foo = ({ classes }) => {
@@ -62,31 +58,99 @@ const Foo = ({ classes }) => {
           </ListItem>
         </List>
       </Drawer>
-      <main className={classes.content}>
+      <main className={classes.content} style={{ alignItems: 'center' }}>
         <div className={classes.toolbar} />
-
-        <Card>
+        <Card
+          style={{
+            maxWidth: '45em',
+            minWidth: '30em',
+            alignSelf: 'stretch',
+          }}
+        >
           <CardContent className="cardContent" style={{ display: 'flex' }}>
-            <Avatar
-              src="https://randomuser.me/api/portraits/men/29.jpg"
-              style={{ marginRight: '1em', alignSelf: 'center' }}
-            />
-            <div>
-              <FormControl>
-                <FormLabel>Would you rather? </FormLabel>
-                <RadioGroup>
-                  <FormControlLabel
-                    value="optionOne"
-                    control={<Radio />}
-                    label="Be telekinetic?"
-                  />
-                  <FormControlLabel
-                    value="optionTwo"
-                    control={<Radio />}
-                    label="Be telepathic?"
-                  />
-                </RadioGroup>
-              </FormControl>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                marginRight: '1.5em',
+              }}
+            >
+              <Avatar
+                src="https://randomuser.me/api/portraits/men/29.jpg"
+                style={{
+                  height: 75,
+                  width: 75,
+                }}
+              />
+              <Typography>@mamodom</Typography>
+              <Typography>{new Date().toDateString()}</Typography>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                flexGrow: 1,
+              }}
+            >
+              <Typography style={{ alignSelf: 'center' }} variant="title">
+                Would you rather?
+              </Typography>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <Button style={{ margin: '0.4em' }} variant="outlined">
+                  Be telepathic?
+                </Button>
+                <Button style={{ margin: '0.4em' }} variant="outlined">
+                  Be telekinetic?
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>{' '}
+        <Card
+          style={{
+            maxWidth: '45em',
+            minWidth: '30em',
+            alignSelf: 'stretch',
+          }}
+        >
+          <CardContent className="cardContent" style={{ display: 'flex' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                marginRight: '1.5em',
+              }}
+            >
+              <Avatar
+                src="https://randomuser.me/api/portraits/men/29.jpg"
+                style={{
+                  height: 75,
+                  width: 75,
+                }}
+              />
+              <Typography>@mamodom</Typography>
+              <Typography>{new Date().toDateString()}</Typography>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                flexGrow: 1,
+              }}
+            >
+              <Typography style={{ alignSelf: 'center' }} variant="title">
+                Would you rather?
+              </Typography>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <Button style={{ margin: '0.4em' }} variant="outlined">
+                  Be telepathic?
+                </Button>
+                <Button style={{ margin: '0.4em' }} variant="outlined">
+                  Be telekinetic?
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -122,6 +186,8 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
     minWidth: 0, // So the Typography noWrap works
+    display: 'flex',
+    flexDirection: 'column',
   },
   toolbar: theme.mixins.toolbar,
 });
