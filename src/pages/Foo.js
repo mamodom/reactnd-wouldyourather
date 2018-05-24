@@ -16,6 +16,58 @@ import {
   Button,
 } from '@material-ui/core';
 
+const Question = () => {
+  return (
+    <Card
+      style={{
+        maxWidth: '45em',
+        minWidth: '30em',
+        alignSelf: 'stretch',
+      }}
+    >
+      <CardContent className="cardContent" style={{ display: 'flex' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginRight: '1.5em',
+          }}
+        >
+          <Avatar
+            src="https://randomuser.me/api/portraits/men/29.jpg"
+            style={{
+              height: 75,
+              width: 75,
+            }}
+          />
+          <Typography>@mamodom</Typography>
+          <Typography>{new Date().toDateString()}</Typography>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            flexGrow: 1,
+          }}
+        >
+          <Typography style={{ alignSelf: 'center' }} variant="title">
+            Would you rather?
+          </Typography>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Button style={{ margin: '0.4em' }} variant="outlined">
+              Be telepathic?
+            </Button>
+            <Button style={{ margin: '0.4em' }} variant="outlined">
+              Be telekinetic?
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
 const Foo = ({ classes }) => {
   return (
     <div className={classes.root}>
@@ -60,181 +112,9 @@ const Foo = ({ classes }) => {
       </Drawer>
       <main className={classes.content} style={{ alignItems: 'center' }}>
         <div className={classes.toolbar} />
-        <Card
-          style={{
-            maxWidth: '45em',
-            minWidth: '30em',
-            alignSelf: 'stretch',
-          }}
-        >
-          <CardContent className="cardContent" style={{ display: 'flex' }}>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                marginRight: '1.5em',
-              }}
-            >
-              <Avatar
-                src="https://randomuser.me/api/portraits/men/29.jpg"
-                style={{
-                  height: 75,
-                  width: 75,
-                }}
-              />
-              <Typography>@mamodom</Typography>
-              <Typography>{new Date().toDateString()}</Typography>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                flexGrow: 1,
-              }}
-            >
-              <Typography style={{ alignSelf: 'center' }} variant="title">
-                Would you rather?
-              </Typography>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <Button style={{ margin: '0.4em' }} variant="outlined">
-                  Be telepathic?
-                </Button>
-                <Button style={{ margin: '0.4em' }} variant="outlined">
-                  Be telekinetic?
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card
-          style={{
-            maxWidth: '45em',
-            minWidth: '30em',
-            alignSelf: 'stretch',
-          }}
-        >
-          <CardContent className="cardContent" style={{ display: 'flex' }}>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                marginRight: '1.5em',
-              }}
-            >
-              <Avatar
-                src="https://randomuser.me/api/portraits/men/29.jpg"
-                style={{
-                  height: 75,
-                  width: 75,
-                }}
-              />
-              <Typography>@mamodom</Typography>
-              <Typography>{new Date().toDateString()}</Typography>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                flexGrow: 1,
-              }}
-            >
-              <Typography style={{ alignSelf: 'center' }} variant="title">
-                Would you rather?
-              </Typography>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <Button style={{ margin: '0.4em' }} variant="outlined">
-                  Be telepathic?
-                </Button>
-                <Button style={{ margin: '0.4em' }} variant="outlined">
-                  Be telekinetic?
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card
-          style={{
-            maxWidth: '45em',
-            minWidth: '30em',
-            alignSelf: 'stretch',
-          }}
-        >
-          <CardContent className="cardContent" style={{ display: 'flex' }}>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                marginRight: '1.5em',
-              }}
-            >
-              <Avatar
-                src="https://randomuser.me/api/portraits/men/29.jpg"
-                style={{
-                  height: 75,
-                  width: 75,
-                }}
-              />
-              <Typography>@mamodom</Typography>
-              <Typography>{new Date().toDateString()}</Typography>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                flexGrow: 1,
-              }}
-            >
-              <Typography style={{ alignSelf: 'center' }} variant="title">
-                Would you rather?
-              </Typography>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div
-                  className="TwitterCardsGrid-col--12 PollXChoice-optionContainer "
-                  data-poll-index="1"
-                >
-                  <label className="PollXChoice-choice" data-poll-index="1">
-                    <span
-                      className="PollXChoice-choice--chart"
-                      style={{ width: '19%' }}
-                      data-poll-index="1"
-                    />
-                    <input
-                      className="PollXChoice-choice--input"
-                      type="radio"
-                      value="1"
-                      name="vote-options"
-                      data-poll-index="1"
-                    />
-                    <span
-                      className="PollXChoice-choice--radio"
-                      data-poll-index="1"
-                    />
-                    <span
-                      className="PollXChoice-choice--text"
-                      data-poll-index="1"
-                    >
-                      <span className="PollXChoice-progress tcu-textBold">
-                        19%
-                      </span>
-                      <span>Suho ~ EXO</span>
-                      <span
-                        className="PollXChoice-choice--selected"
-                        data-poll-index="1"
-                      />
-                    </span>
-                  </label>
-                </div>
-
-                <Button style={{ margin: '0.4em' }} variant="outlined">
-                  Be telekinetic?
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <Question />
+        <Question />
+        <Question />
       </main>
     </div>
   );
