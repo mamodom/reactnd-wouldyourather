@@ -106,7 +106,7 @@ const Foo = ({ classes }) => {
               </div>
             </div>
           </CardContent>
-        </Card>{' '}
+        </Card>
         <Card
           style={{
             maxWidth: '45em',
@@ -154,6 +154,87 @@ const Foo = ({ classes }) => {
             </div>
           </CardContent>
         </Card>
+        <Card
+          style={{
+            maxWidth: '45em',
+            minWidth: '30em',
+            alignSelf: 'stretch',
+          }}
+        >
+          <CardContent className="cardContent" style={{ display: 'flex' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                marginRight: '1.5em',
+              }}
+            >
+              <Avatar
+                src="https://randomuser.me/api/portraits/men/29.jpg"
+                style={{
+                  height: 75,
+                  width: 75,
+                }}
+              />
+              <Typography>@mamodom</Typography>
+              <Typography>{new Date().toDateString()}</Typography>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                flexGrow: 1,
+              }}
+            >
+              <Typography style={{ alignSelf: 'center' }} variant="title">
+                Would you rather?
+              </Typography>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <div
+                  className="TwitterCardsGrid-col--12 PollXChoice-optionContainer "
+                  data-poll-index="1"
+                >
+                  <label className="PollXChoice-choice" data-poll-index="1">
+                    <span
+                      className="PollXChoice-choice--chart"
+                      style={{ width: '19%' }}
+                      data-poll-index="1"
+                    />
+                    <input
+                      className="PollXChoice-choice--input"
+                      type="radio"
+                      value="1"
+                      name="vote-options"
+                      data-poll-index="1"
+                    />
+                    <span
+                      className="PollXChoice-choice--radio"
+                      data-poll-index="1"
+                    />
+                    <span
+                      className="PollXChoice-choice--text"
+                      data-poll-index="1"
+                    >
+                      <span className="PollXChoice-progress tcu-textBold">
+                        19%
+                      </span>
+                      <span>Suho ~ EXO</span>
+                      <span
+                        className="PollXChoice-choice--selected"
+                        data-poll-index="1"
+                      />
+                    </span>
+                  </label>
+                </div>
+
+                <Button style={{ margin: '0.4em' }} variant="outlined">
+                  Be telekinetic?
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </main>
     </div>
   );
@@ -162,7 +243,7 @@ const Foo = ({ classes }) => {
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 430,
+
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
