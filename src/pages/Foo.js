@@ -68,6 +68,91 @@ const Question = () => {
   );
 };
 
+const AnsweredQuestion = () => {
+  return (
+    <Card
+      style={{
+        maxWidth: '45em',
+        minWidth: '30em',
+        alignSelf: 'stretch',
+      }}
+    >
+      <CardContent className="cardContent" style={{ display: 'flex' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginRight: '1.5em',
+          }}
+        >
+          <Avatar
+            src="https://randomuser.me/api/portraits/men/29.jpg"
+            style={{
+              height: 75,
+              width: 75,
+            }}
+          />
+          <Typography>@mamodom</Typography>
+          <Typography>{new Date().toDateString()}</Typography>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            flexGrow: 1,
+          }}
+        >
+          <Typography style={{ alignSelf: 'center' }} variant="title">
+            Would you rather?
+          </Typography>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Button style={{ margin: '0.4em' }} variant="outlined">
+              Be telepathic?
+            </Button>
+            <div
+              style={{
+                margin: '0.4em',
+                border: '1px solid rgba(0, 0, 0, 0.23)',
+                borderRadius: '4px',
+                display: 'flex',
+                alignItems: 'center',
+                color: 'rgba(0, 0, 0, 0.87)',
+                fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+                fontSize: '14px',
+                fontStretch: '100%',
+                fontWeight: '500',
+                justifyContent: 'center',
+                lineHeight: '19.6px',
+                padding: '8px 16px 8px 16px',
+                textTransform: 'uppercase',
+                position: 'relative',
+              }}
+            >
+              Be telekinetic?
+              <span
+                style={{
+                  backgroundColor: 'rgba(0, 0, 0, 0.23)',
+                  position: 'absolute',
+                  width: '75%',
+                  height: '100%',
+                  overflow: 'hidden',
+                  borderRadius: '3px',
+                  top: 0,
+                  left: 0,
+                  zIndex: 0,
+                }}
+              >
+                {''}
+              </span>
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
 const Foo = ({ classes }) => {
   return (
     <div className={classes.root}>
@@ -113,7 +198,7 @@ const Foo = ({ classes }) => {
       <main className={classes.content} style={{ alignItems: 'center' }}>
         <div className={classes.toolbar} />
         <Question />
-        <Question />
+        <AnsweredQuestion />
         <Question />
       </main>
     </div>
