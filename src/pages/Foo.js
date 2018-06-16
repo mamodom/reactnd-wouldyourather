@@ -197,6 +197,12 @@ const Foo = ({ classes }) => {
       </Drawer>
       <main className={classes.content} style={{ alignItems: 'center' }}>
         <div className={classes.toolbar} />
+        <div style={{ paddingBottom: 'inherit' }}>
+          <Button variant="raised" color="primary">
+            Unanswered
+          </Button>
+          <Button variant="raised">Answered</Button>
+        </div>
         <Question />
         <AnsweredQuestion />
         <Question />
