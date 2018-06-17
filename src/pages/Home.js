@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button } from '@material-ui/core';
 
 import Question from '../components/Question';
 import Layout from '../components/Layout';
