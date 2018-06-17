@@ -1,21 +1,33 @@
 import React from 'react';
-import { withStyles, Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
+
+import Option from './Option';
 
 const Options = ({
   classes: { option, options },
-  question,
+  optionOne,
+  optionTwo,
   answer,
   author,
-}) => (
-  <div className={options}>
-    <Button className={option} variant="outlined">
-      {question.optionOne.text}
-    </Button>
-    <Button className={option} variant="outlined">
-      {question.optionTwo.text}
-    </Button>
-  </div>
-);
+}) => {
+  const totalAnswers = optionOne.votes.length + optionTwo.votes.length;
+  return (
+    <div className={options}>
+      <Option
+        id="optionOne"
+        {...optionOne}
+        totalAnswers={totalAnswers}
+        answer={answer}
+      />
+      <Option
+        id="optionTwo"
+        {...optionTwo}
+        totalAnswers={totalAnswers}
+        answer={answer}
+      />
+    </div>
+  );
+};
 
 const styles = theme => ({
   options: {

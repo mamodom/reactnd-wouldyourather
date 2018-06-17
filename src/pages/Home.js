@@ -23,7 +23,7 @@ class Home extends Component {
         <h1>Home</h1>
         {this.props.unanswered.map(id => <QuestionUI id={id} key={id} />)}
         <hr />
-        {this.props.answered.map(id => <Question id={id} key={id} />)}
+        {this.props.answered.map(id => <QuestionUI id={id} key={id} />)}
       </Layout>
     );
   }

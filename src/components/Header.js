@@ -16,12 +16,14 @@ const Header = ({ classes }) => {
   );
 };
 
-const styles = theme => ({
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-});
+const styles = theme => {
+  return {
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+  };
+};
 
 export default withStyles(styles)(Header);

@@ -29,7 +29,7 @@ const QuestionUI = ({
       </div>
       <div className={body}>
         <Typography className={title}>Would you rather?</Typography>
-        <Options question={question} answer={answer} />
+        <Options {...question} answer={answer} />
       </div>
     </CardContent>
   </Card>
