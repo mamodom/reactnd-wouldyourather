@@ -9,7 +9,7 @@ const Layout = ({ classes, children }) => {
     <div className={classes.root}>
       <Header />
       <SideBar />
-      <main>
+      <main className={classes.content}>
         <div className={classes.toolbar} />
         {children}
       </main>
@@ -26,6 +26,14 @@ const styles = theme => ({
     display: 'flex',
   },
   toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing.unit * 3,
+    minWidth: 0,
+    display: 'flex',
+    flexDirection: 'column',
+  },
 });
 
 export default withStyles(styles)(Layout);
