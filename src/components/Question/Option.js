@@ -1,12 +1,14 @@
 import React from 'react';
 import { withStyles, Button } from '@material-ui/core';
+import { connect } from 'react-redux';
+
+import { answerQuestion } from '../../actions';
 
 const Option = ({
   classes: {
     root,
     withResults,
     percentageBar,
-
     selectedPercentageBar,
     optionText,
   },
@@ -15,15 +17,23 @@ const Option = ({
   votes,
   totalAnswers,
   answer,
+  answerQuestion,
+  questionId,
 }) => {
   if (!answer)
     return (
-      <Button className={root} variant="outlined">
+      <Button
+        className={root}
+        variant="outlined"
+        onClick={() => {
+          answerQuestion(questionId, id);
+        }}
+      >
         {text}
       </Button>
     );
 
-  const percentage = `${(100 * votes.length) / totalAnswers}%`;
+  const percentage = `${((100 * votes.length) / totalAnswers).toFixed(0)}%`;
 
   return (
     <div className={withResults}>
@@ -97,4 +107,7 @@ const styles = theme => {
   };
 };
 
-export default withStyles(styles)(Option);
+export default connect(
+  () => ({}),
+  { answerQuestion }
+)(withStyles(styles)(Option));

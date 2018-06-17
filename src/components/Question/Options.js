@@ -4,23 +4,25 @@ import { withStyles } from '@material-ui/core';
 import Option from './Option';
 
 const Options = ({
-  classes: { option, options },
+  classes: { options },
+  id,
   optionOne,
   optionTwo,
   answer,
-  author,
 }) => {
   const totalAnswers = optionOne.votes.length + optionTwo.votes.length;
   return (
     <div className={options}>
       <Option
         id="optionOne"
+        questionId={id}
         {...optionOne}
         totalAnswers={totalAnswers}
         answer={answer}
       />
       <Option
         id="optionTwo"
+        questionId={id}
         {...optionTwo}
         totalAnswers={totalAnswers}
         answer={answer}
@@ -29,14 +31,11 @@ const Options = ({
   );
 };
 
-const styles = theme => ({
+const styles = {
   options: {
     display: 'flex',
     flexDirection: 'column',
   },
-  option: {
-    margin: '0.4em',
-  },
-});
+};
 
 export default withStyles(styles)(Options);
