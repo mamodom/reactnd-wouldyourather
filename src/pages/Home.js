@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
 
 import Question from '../components/Question';
+import QuestionUI from '../components/QuestionUI';
 import Layout from '../components/Layout';
 
 import { fetchQuestions } from '../actions';
@@ -24,7 +21,7 @@ class Home extends Component {
     return (
       <Layout>
         <h1>Home</h1>
-        {this.props.unanswered.map(id => <Question id={id} key={id} />)}
+        {this.props.unanswered.map(id => <QuestionUI id={id} key={id} />)}
         <hr />
         {this.props.answered.map(id => <Question id={id} key={id} />)}
       </Layout>

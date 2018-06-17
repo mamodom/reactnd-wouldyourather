@@ -10,7 +10,8 @@ const Layout = ({ classes, children }) => {
       <Header />
       <SideBar />
       <main>
-        <div className={classes.toolbar}>{children}</div>
+        <div className={classes.toolbar} />
+        {children}
       </main>
     </div>
   );
