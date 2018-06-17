@@ -25,10 +25,14 @@ const Question = ({
           alt={`${author.id} avatar`}
         />
         <Typography>{author.name}</Typography>
-        <Typography>{new Date(question.timestamp).toDateString()}</Typography>
+        <Typography color="textSecondary">
+          {new Date(question.timestamp).toDateString()}
+        </Typography>
       </div>
       <div className={body}>
-        <Typography className={title}>Would you rather?</Typography>
+        <Typography className={title} variant="headline">
+          Would you rather?
+        </Typography>
         <Options {...question} answer={answer} />
       </div>
     </CardContent>
