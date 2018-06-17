@@ -10,7 +10,7 @@ import {
 
 import Options from './Options';
 
-const QuestionUI = ({
+const Question = ({
   classes: { avatar, body, content, option, options, postInfo, root, title },
   question,
   answer,
@@ -85,4 +85,4 @@ const mapStateToProps = (
   };
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(QuestionUI));
+export default connect(mapStateToProps)(withStyles(styles)(Question));

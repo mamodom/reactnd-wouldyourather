@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Question from '../components/Question';
-import QuestionUI from '../components/QuestionUI';
 import Layout from '../components/Layout';
 
 import { fetchQuestions } from '../actions';
@@ -21,9 +20,9 @@ class Home extends Component {
     return (
       <Layout>
         <h1>Home</h1>
-        {this.props.unanswered.map(id => <QuestionUI id={id} key={id} />)}
+        {this.props.unanswered.map(id => <Question id={id} key={id} />)}
         <hr />
-        {this.props.answered.map(id => <QuestionUI id={id} key={id} />)}
+        {this.props.answered.map(id => <Question id={id} key={id} />)}
       </Layout>
     );
   }
