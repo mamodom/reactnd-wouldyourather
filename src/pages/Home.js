@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
 import Question from '../components/Question';
-import UserHeader from '../components/UserHeader';
 import Layout from '../components/Layout';
 
 import { fetchQuestions } from '../actions';
