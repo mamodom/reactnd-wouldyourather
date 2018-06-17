@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import Question from '../components/Question';
 import UserHeader from '../components/UserHeader';
+import Layout from '../components/Layout';
 
 import { fetchQuestions } from '../actions';
 import withAuthorization from '../containers/Authorized';
@@ -22,26 +23,12 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <AppBar>
-          <Toolbar>
-            <Typography variant="title" color="inherit">
-              Would you rather
-            </Typography>
-          </Toolbar>
-          <IconButton
-            aria-owns={this.state.open ? 'menu-appbar' : null}
-            aria-haspopup="true"
-            onClick={this.handleMenu}
-            color="inherit"
-          />
-        </AppBar>
-        <UserHeader />
+      <Layout>
         <h1>Home</h1>
         {this.props.unanswered.map(id => <Question id={id} key={id} />)}
         <hr />
         {this.props.answered.map(id => <Question id={id} key={id} />)}
-      </div>
+      </Layout>
     );
   }
 }
@@ -65,7 +52,10 @@ const mapStateToProps = ({ users, auth, questions }) => {
 };
 
 export default withAuthorization(
-  connect(mapStateToProps, {
-    fetchQuestions,
-  })(Home)
+  connect(
+    mapStateToProps,
+    {
+      fetchQuestions,
+    }
+  )(Home)
 );

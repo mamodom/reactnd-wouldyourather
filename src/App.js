@@ -16,7 +16,6 @@ const store = createStore(reducer, {}, enhancer);
 
 class App extends Component {
   render() {
-    return <Foo />;
     return (
       <Provider store={store}>
         <BrowserRouter>
