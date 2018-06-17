@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from '@material-ui/core';
 
 import Question from '../components/Question';
 import Layout from '../components/Layout';
+import CurrentViewSelector from '../components/CurrentViewSelector';
 
 import { fetchQuestions } from '../actions';
 import withAuthorization from '../containers/Authorized';
 
 class Home extends Component {
   state = {
-    open: false,
+    current: 'unanswered',
+  };
+
+  changeCurrent = current => {
+    this.setState({ current });
   };
 
   componentDidMount() {
@@ -19,10 +25,21 @@ class Home extends Component {
   render() {
     return (
       <Layout>
-        <h1>Home</h1>
-        {this.props.unanswered.map(id => <Question id={id} key={id} />)}
-        <hr />
-        {this.props.answered.map(id => <Question id={id} key={id} />)}
+        <div style={{ paddingBottom: 'inherit' }}>
+          <CurrentViewSelector
+            keyValue="unanswered"
+            selected={this.state.current}
+            onSelected={this.changeCurrent}
+          />
+          <CurrentViewSelector
+            keyValue="answered"
+            selected={this.state.current}
+            onSelected={this.changeCurrent}
+          />
+        </div>
+        {this.props[this.state.current].map(id => (
+          <Question id={id} key={id} />
+        ))}
       </Layout>
     );
   }
