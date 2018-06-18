@@ -11,7 +11,7 @@ import {
 import Options from './Options';
 
 const Question = ({
-  classes: { avatar, body, content, option, options, postInfo, root, title },
+  classes: { avatar, body, content, postInfo, root, title },
   question,
   answer,
   author,
@@ -65,13 +65,6 @@ const styles = theme => ({
   },
   title: {
     alignSelf: 'center',
-  },
-  options: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  option: {
-    margin: '0.4em',
   },
 });
 
