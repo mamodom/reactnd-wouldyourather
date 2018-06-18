@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   Typography,
   withStyles,
@@ -25,9 +26,12 @@ const Question = ({
           alt={`${author.id} avatar`}
         />
         <Typography>{author.name}</Typography>
-        <Typography color="textSecondary">
-          {new Date(question.timestamp).toDateString()}
-        </Typography>
+
+        <Link to={`/questions/${question.id}`}>
+          <Typography color="textSecondary">
+            {new Date(question.timestamp).toDateString()}
+          </Typography>
+        </Link>
       </div>
       <div className={body}>
         <Typography className={title} variant="headline">

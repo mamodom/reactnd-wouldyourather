@@ -1,28 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
 import withAuthorization from '../containers/Authorized';
 
-class QuestionDetails extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Question {this.props.id}</h1>
-      </div>
-    );
-  }
-}
+import Layout from '../components/Layout';
+import Question from '../components/Question';
 
-const mapStateToProps = (
-  { questions, auth: { currentUser }, users },
-  ownProps
-) => {
-  const id = ownProps.match.params.questionId;
-  return {
-    ...questions[id],
-    currentUser,
-    authorAvatar: users[questions[id].author].avatarURL,
-  };
+const QuestionDetails = ({
+  match: {
+    params: { questionId },
+  },
+}) => {
+  return (
+    <Layout>
+      <Question id={questionId} key={questionId} />
+    </Layout>
+  );
 };
 
-export default withAuthorization(connect(mapStateToProps)(QuestionDetails));
+export default withAuthorization(QuestionDetails);
