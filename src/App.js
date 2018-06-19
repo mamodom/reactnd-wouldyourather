@@ -2,28 +2,32 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { Route } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { connectRouter, ConnectedRouter } from 'connected-react-router';
 
 import Auth from './pages/Auth';
 import Home from './pages/Home';
 import QuestionDetails from './pages/QuestionDetails';
 
 import reducer from './reducers';
-import enhancer from './enhancer';
+import createEnhancer from './enhancer';
 
-const store = createStore(reducer, {}, enhancer);
+const history = createBrowserHistory();
+const enhancer = createEnhancer(history);
+
+const store = createStore(connectRouter(history)(reducer), {}, enhancer);
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <ConnectedRouter history={history}>
           <div>
             <Route path="/signin" component={Auth} />
             <Route exact path="/" component={Home} />
             <Route path="/questions/:questionId" component={QuestionDetails} />
           </div>
-        </BrowserRouter>
+        </ConnectedRouter>
       </Provider>
     );
   }
