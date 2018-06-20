@@ -5,7 +5,7 @@ import Question from '../components/Question';
 import Layout from '../components/Layout';
 import CurrentViewSelector from '../components/CurrentViewSelector';
 
-import { fetchQuestions } from '../actions';
+import { fetchQuestions, fetchUsers } from '../actions';
 import withAuthorization from '../containers/Authorized';
 
 class Home extends Component {
@@ -19,6 +19,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.fetchQuestions();
+    this.props.fetchUsers();
   }
 
   render() {
@@ -67,6 +68,7 @@ export default withAuthorization(
     mapStateToProps,
     {
       fetchQuestions,
+      fetchUsers,
     }
   )(Home)
 );

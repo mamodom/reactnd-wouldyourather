@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import {
   Typography,
   withStyles,
   Avatar,
   Card,
   CardContent,
+  LinearProgress,
 } from '@material-ui/core';
 
 import Options from './Options';
@@ -16,29 +18,36 @@ const Question = ({
   question,
   answer,
   author,
+  loaded,
 }) => (
   <Card className={root}>
     <CardContent className={content}>
-      <div className={postInfo}>
-        <Avatar
-          className={avatar}
-          src={author.avatarURL}
-          alt={`${author.id} avatar`}
-        />
-        <Typography>{author.name}</Typography>
+      {loaded ? (
+        <Fragment>
+          <div className={postInfo}>
+            <Avatar
+              className={avatar}
+              src={author.avatarURL}
+              alt={`${author.id} avatar`}
+            />
+            <Typography>{author.name}</Typography>
 
-        <Link to={`/questions/${question.id}`}>
-          <Typography color="textSecondary">
-            {new Date(question.timestamp).toDateString()}
-          </Typography>
-        </Link>
-      </div>
-      <div className={body}>
-        <Typography className={title} variant="headline">
-          Would you rather?
-        </Typography>
-        <Options {...question} answer={answer} />
-      </div>
+            <Link to={`/questions/${question.id}`}>
+              <Typography color="textSecondary">
+                {new Date(question.timestamp).toDateString()}
+              </Typography>
+            </Link>
+          </div>
+          <div className={body}>
+            <Typography className={title} variant="headline">
+              Would you rather?
+            </Typography>
+            <Options {...question} answer={answer} />
+          </div>
+        </Fragment>
+      ) : (
+        <LinearProgress style={{ flexGrow: 1 }}> </LinearProgress>
+      )}
     </CardContent>
   </Card>
 );
@@ -76,13 +85,21 @@ const mapStateToProps = (
   { questions, users, auth: { currentUser } },
   ownProps
 ) => {
-  const question = questions[ownProps.id];
-  const user = users[currentUser];
+  const loaded =
+    questions &&
+    questions[ownProps.id] &&
+    users &&
+    users[currentUser] &&
+    users[questions[ownProps.id].author];
+
+  const question = questions[ownProps.id] || {};
+  const user = users[currentUser] || {};
   return {
+    loaded,
     question,
     currentUser: user,
     author: users[question.author],
-    answer: user.answers[question.id],
+    answer: (user.answers || {})[question.id],
   };
 };
 
