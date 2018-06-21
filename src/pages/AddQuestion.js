@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 
 import Layout from '../components/Layout';
-import { addQuestion } from '../actions';
+import { addQuestion, fetchUsers } from '../actions';
 import withAuthorization from '../containers/Authorized';
 
 class AddQuestion extends Component {
@@ -113,6 +113,7 @@ export default withStyles(styles)(
       mapStateToProps,
       {
         addQuestion,
+        fetchUsers,
       }
     )(AddQuestion)
   )
