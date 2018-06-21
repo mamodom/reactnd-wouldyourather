@@ -1,5 +1,10 @@
 import types from './types';
-import { _getQuestions, _saveQuestionAnswer } from '../helpers/_DATA';
+import {
+  _getQuestions,
+  _saveQuestionAnswer,
+  _saveQuestion,
+} from '../helpers/_DATA';
+import { push } from 'connected-react-router';
 
 const questionsFetched = questions => ({
   type: types.questions.fetched,
@@ -29,7 +34,30 @@ export const answerQuestion = (questionId, answer) => (dispatch, getState) => {
     authedUser: currentUser,
     qid: questionId,
     answer,
-  }).catch(reason => {
+  }).catch(() => {
     dispatch(fetchQuestions());
   });
+};
+
+const questionAdded = question => ({
+  type: types.questions.added,
+  question,
+});
+
+export const addQuestion = ({ optionOneText, optionTwoText }) => async (
+  dispatch,
+  getState
+) => {
+  const {
+    auth: { currentUser: author },
+  } = getState();
+
+  const question = await _saveQuestion({
+    optionOneText,
+    optionTwoText,
+    author,
+  });
+
+  dispatch(questionAdded(question));
+  dispatch(push('/'));
 };

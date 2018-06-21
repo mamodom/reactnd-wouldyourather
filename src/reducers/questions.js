@@ -18,6 +18,12 @@ export default (state = {}, action) => {
           },
         },
       };
+
+    case types.questions.added:
+      return {
+        ...state,
+        [action.question.id]: action.question,
+      };
     default:
       return state;
   }
