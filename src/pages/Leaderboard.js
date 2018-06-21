@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {
   Card,
   CardContent,
-  Avatar,
   Typography,
   withStyles,
   CardMedia,
