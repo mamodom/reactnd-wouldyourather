@@ -11,6 +11,8 @@ const Option = ({
     percentageBar,
     selectedPercentageBar,
     optionText,
+    statsContainer,
+    stats,
   },
   id,
   text,
@@ -44,21 +46,11 @@ const Option = ({
           width: percentage,
         }}
       />
-      <div
-        style={{
-          position: 'absolute',
-          height: '100%',
-          width: '100%',
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-end',
-        }}
-      >
-        <span style={{ zIndex: 1 }}>
+      <div className={statsContainer}>
+        <span className={stats}>
           {votes.length} vote{votes.length === 1 ? '' : 's'}
         </span>
-        <span style={{ zIndex: 1 }}>{percentage}</span>
+        <span className={stats}>{percentage}</span>
       </div>
     </div>
   );
@@ -103,6 +95,20 @@ const styles = theme => {
     },
     optionText: {
       zIndex: 2,
+    },
+    statsContainer: {
+      position: 'absolute',
+      height: '100%',
+      width: '100%',
+      overflow: 'hidden',
+      display: 'flex',
+
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    stats: {
+      zIndex: 1,
+      padding: '0.5em',
     },
   };
 };
