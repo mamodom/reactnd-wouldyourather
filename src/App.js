@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import QuestionDetails from './pages/QuestionDetails';
 import AddQuestion from './pages/AddQuestion';
 import Leaderboard from './pages/Leaderboard';
+import NotFound from './pages/NotFound';
 
 import createStore from './store';
 
@@ -25,6 +26,7 @@ const App = () => (
         <Route path="/questions/:questionId" component={QuestionDetails} />
         <Route path="/add" exact component={AddQuestion} />
         <Route path="/leaderboard" exact component={Leaderboard} />
+        <Route path="*" component={NotFound} />
       </Switch>
     </ConnectedRouter>
   </Provider>
