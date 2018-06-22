@@ -9,6 +9,8 @@ import {
 } from '@material-ui/core';
 
 import { fetchUsers } from '../actions';
+import withAuthorization from '../containers/Authorized';
+
 import Layout from '../components/Layout';
 
 class Leaderboard extends Component {
@@ -73,7 +75,9 @@ const mapStateToProps = ({ users }) => ({
     .sort((a, b) => b.questions + b.answers - (a.questions + a.answers)),
 });
 
-export default connect(
-  mapStateToProps,
-  { fetchUsers }
-)(withStyles(styles)(Leaderboard));
+export default withAuthorization(
+  connect(
+    mapStateToProps,
+    { fetchUsers }
+  )(withStyles(styles)(Leaderboard))
+);

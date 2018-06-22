@@ -1,13 +1,62 @@
-import React from 'react';
-import { withStyles, Avatar, Typography } from '@material-ui/core';
+import React, { Fragment, Component } from 'react';
+import {
+  withStyles,
+  Avatar,
+  Typography,
+  Menu,
+  MenuItem,
+} from '@material-ui/core';
 import { connect } from 'react-redux';
 
-const CurrentUser = ({ classes, name, avatarURL }) => (
-  <div className={classes.root}>
-    <Typography color="inherit">{name}</Typography>
-    <Avatar src={avatarURL} className={classes.avatar} />
-  </div>
-);
+import { logout } from '../actions';
+
+class CurrentUser extends Component {
+  state = {
+    menuOpen: false,
+    anchorEl: null,
+  };
+
+  handleClick = e => {
+    this.setState({ anchorEl: e.currentTarget, menuOpen: true });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null, menuOpen: false });
+  };
+
+  render() {
+    const { classes, user, logout } = this.props;
+
+    return user ? (
+      <Fragment>
+        <div className={classes.root}>
+          <Typography color="inherit">{user.name}</Typography>
+          <Avatar
+            src={user.avatarURL}
+            className={classes.avatar}
+            onClick={this.handleClick}
+          />
+        </div>
+
+        <Menu
+          open={this.state.menuOpen}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          getContentAnchorEl={null}
+          onClose={this.handleClose}
+        >
+          <MenuItem onClick={logout}>Logout</MenuItem>
+        </Menu>
+      </Fragment>
+    ) : null;
+  }
+}
+
+// const CurrentUser = ({ classes, user }) =>
+//   ;
 
 const styles = theme => ({
   root: {
@@ -18,7 +67,10 @@ const styles = theme => ({
 });
 
 const mapStateToProps = ({ users, auth: { currentUser } }) => ({
-  ...users[currentUser],
+  user: users[currentUser],
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(CurrentUser));
+export default connect(
+  mapStateToProps,
+  { logout }
+)(withStyles(styles)(CurrentUser));
