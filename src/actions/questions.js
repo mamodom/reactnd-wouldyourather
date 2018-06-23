@@ -4,7 +4,7 @@ import {
   _saveQuestionAnswer,
   _saveQuestion,
 } from '../helpers/_DATA';
-import { push } from 'connected-react-router';
+import { push, replace } from 'connected-react-router';
 
 const questionsFetched = questions => ({
   type: types.questions.fetched,
@@ -60,4 +60,23 @@ export const addQuestion = ({ optionOneText, optionTwoText }) => async (
 
   dispatch(questionAdded(question));
   dispatch(push('/'));
+};
+
+export const ensureQuestionExists = questionId => async (
+  dispatch,
+  getState
+) => {
+  const {
+    questions: { [questionId]: question },
+  } = getState();
+
+  if (question) return;
+
+  const questions = await _getQuestions();
+
+  dispatch(questionsFetched(questions));
+
+  if (questionId in questions) return;
+
+  dispatch(replace('/404'));
 };

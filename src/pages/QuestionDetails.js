@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { fetchUsers, fetchQuestions } from '../actions';
+import { fetchUsers, ensureQuestionExists } from '../actions';
 import withAuthorization from '../containers/Authorized';
 
 import Layout from '../components/Layout';
@@ -10,7 +10,7 @@ import Question from '../components/Question';
 
 class QuestionDetails extends Component {
   componentDidMount() {
-    this.props.fetchQuestions();
+    this.props.ensureQuestionExists(this.props.match.params.questionId);
     this.props.fetchUsers();
   }
 
@@ -28,6 +28,6 @@ class QuestionDetails extends Component {
 export default withAuthorization(
   connect(
     () => ({}),
-    { fetchUsers, fetchQuestions }
+    { fetchUsers, ensureQuestionExists }
   )(QuestionDetails)
 );
