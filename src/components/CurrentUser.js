@@ -8,13 +8,17 @@ import {
 } from '@material-ui/core';
 import { connect } from 'react-redux';
 
-import { logout } from '../actions';
+import { logout, ensureUserInformationIsAvailable } from '../actions';
 
 class CurrentUser extends Component {
   state = {
     menuOpen: false,
     anchorEl: null,
   };
+
+  componentDidMount() {
+    this.props.ensureUserInformationIsAvailable();
+  }
 
   handleClick = e => {
     this.setState({ anchorEl: e.currentTarget, menuOpen: true });
@@ -72,5 +76,5 @@ const mapStateToProps = ({ users, auth: { currentUser } }) => ({
 
 export default connect(
   mapStateToProps,
-  { logout }
+  { logout, ensureUserInformationIsAvailable }
 )(withStyles(styles)(CurrentUser));
