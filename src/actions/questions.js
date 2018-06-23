@@ -30,6 +30,8 @@ export const answerQuestion = (questionId, answer) => (dispatch, getState) => {
 
   dispatch(questionAnswerSaved(currentUser, questionId, answer));
 
+  dispatch(push(`/questions/${questionId}`));
+
   _saveQuestionAnswer({
     authedUser: currentUser,
     qid: questionId,
